@@ -52,9 +52,9 @@ menu = {
 
 # 1. Set up order list. Order list will store a list of dictionaries for
 # menu item name, item price, and quantity ordered
-order_list = [] ### this is empty until customer fills it with their order
-
-# Launch the store and present a greeting to the customer
+order_list = [] ## this is created empty and stays empty until customer inputs their order
+## this is where their order is stored.
+## Launch the store and present a greeting to the customer
 print("Welcome to the variety food truck.")
 
 # Customers may want to order multiple items, so let's create a continuous
@@ -129,7 +129,7 @@ while place_order:
 
                 # 4. Check if the menu selection is in the menu items
                 if menu_selection in menu_items.keys(): ## do not need to keep putting "int" 
-                                                        ## menu_selection has already been converted.
+                                                        ## menu_selection has already been converted to int.
 
                     # Store the item name as a variable
                     item_name = menu_items[menu_selection]["Name"] ## menu_items = level 1 of dictionary
@@ -180,7 +180,7 @@ while place_order:
         keep_ordering = input("Would you like to keep ordering? (Y)es or (N)o ")
 
         # 5. Check the customer's input
-        match keep_ordering.lower():  ### what does "lower" mean/do?
+        match keep_ordering.lower():  
             case 'y':
                 # Keep ordering
                 place_order = True
@@ -208,18 +208,18 @@ print("Item name                 | Price  | Quantity")
 print("--------------------------|--------|----------")
 
 # 6. Loop through the items in the customer's order
-for  in range(len(order_list)):
+for food_items in range(len(order_list)):
 
     # 7. Store the dictionary items as variables
-    item_name = order_list["Name"]
-    price = order_list["Price"]
-    quantity = order_list["Quantity"]
+    item_name = order_list[food_items]["Name"]
+    price = order_list[food_items]["Price"]
+    quantity = order_list[food_items]["Quantity"]
 
     # 8. Calculate the number of spaces for formatted printing
-    ## HOW???
+    num_spaces = len(order_list)
 
     # 9. Create space strings
-    print("-" * ) ##CALCULATE
+    print("-" * num_spaces) 
 
     # 10. Print the item name, price, and quantity
     print(f"{item_name} {price} {quantity}")
@@ -227,6 +227,5 @@ for  in range(len(order_list)):
 # 11. Calculate the cost of the order using list comprehension
 # Multiply the price by quantity for each item in the order list, then sum()
 # and print the prices.
-total_cost = price = sum([order_list["Price"] for price in ])
-total_cost = sum([order_list]price * quantity) 
-print(f"{item_name} {price} {quantity}")
+total_cost = sum([order_list]["Price"] * [order_list]["Quantity"]) 
+print(f"{price}")
