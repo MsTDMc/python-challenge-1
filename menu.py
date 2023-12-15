@@ -132,7 +132,7 @@ while place_order:
                                                         ## menu_selection has already been converted to int.
 
                     # Store the item name as a variable
-                    item_name = menu_items[menu_selection]["Name"] ## menu_items = level 1 of dictionary
+                    item_name = menu_items[menu_selection]["Item name"] ## menu_items = level 1 of dictionary
                                                                     ## must define "menu_selection" to successfully 
                                                                     ## reference the dictionary 
                                                                     ## this line of code is referencing 
@@ -150,7 +150,7 @@ while place_order:
  
                     # Add the item name, price, and quantity to the order list
                     order_list.append({
-                        "Name": item_name,
+                        "Item name": item_name,
                         "Price": menu_items[menu_selection]["Price"],## price not defined. 
                                                                     ## must define price to successfully reference
                                                                     ## the price in the dictionary
@@ -202,16 +202,15 @@ while place_order:
 print("This is what we are preparing for you.\n")
 
 # Uncomment the following line to check the structure of the order
-#print(order)
 
-print("Item name                 | Price  | Quantity")
-print("--------------------------|--------|----------")
+##print(order_list)
 
 # 6. Loop through the items in the customer's order
 for food_items in range(len(order_list)):
 
     # 7. Store the dictionary items as variables
-    item_name = order_list[food_items]["Name"]
+    item_name = order_list[food_items]["Item name"]
+
     price = order_list[food_items]["Price"]
     quantity = order_list[food_items]["Quantity"]
 
@@ -219,13 +218,26 @@ for food_items in range(len(order_list)):
     num_spaces = len(order_list)
 
     # 9. Create space strings
-    print("-" * num_spaces) 
+    ##num_item_spaces = 24 - len(key)
+                    ##item_spaces = " " * num_item_spaces
+                    ##print(f"{item_counter}      | "
+                          ##+ f"{key}{item_spaces} | ${value}")
+    print(" " * num_spaces) 
 
     # 10. Print the item name, price, and quantity
-    print(f"{item_name} {price} {quantity}")
+    print("Item name                 | Price  | Quantity")
+    print("--------------------------|--------|----------")
+    ##print(f"{item_name} {price} {quantity}") ##DOES NOT PRINT WITH CORRECT SPACING
+    print(num_spaces)
+    print(order_list)
+    
+
 
 # 11. Calculate the cost of the order using list comprehension
 # Multiply the price by quantity for each item in the order list, then sum()
-# and print the prices.
-total_cost = sum([order_list]["Price"] * [order_list]["Quantity"]) 
-print(f"{price}")
+# and print the prices.4
+
+
+##total_cost = sum([order_list["Price"] * order_list["Quantity"] for item in order_list]) 
+total_cost = sum([item["Price"] * item["Quantity"] for item in order_list])
+print(f"${total_cost:.4f}")
