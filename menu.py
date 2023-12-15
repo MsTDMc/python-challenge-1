@@ -204,40 +204,33 @@ print("This is what we are preparing for you.\n")
 # Uncomment the following line to check the structure of the order
 
 ##print(order_list)
+print("Item name                 | Price  | Quantity")
+print("--------------------------|--------|----------")
 
 # 6. Loop through the items in the customer's order
-for food_items in range(len(order_list)):
+for order_item in range(len(order_list)):
 
     # 7. Store the dictionary items as variables
-    item_name = order_list[food_items]["Item name"]
-
-    price = order_list[food_items]["Price"]
-    quantity = order_list[food_items]["Quantity"]
+    item_name = order_list[order_item]["Item name"]
+    price = order_list[order_item]["Price"]
+    quantity = order_list[order_item]["Quantity"]
 
     # 8. Calculate the number of spaces for formatted printing
-    num_spaces = len(order_list)
-
+    name_spaces = 25 - len(item_name)
+    price_spaces = 7 - len("Price")
+ 
     # 9. Create space strings
-    ##num_item_spaces = 24 - len(key)
-                    ##item_spaces = " " * num_item_spaces
-                    ##print(f"{item_counter}      | "
-                          ##+ f"{key}{item_spaces} | ${value}")
-    print(" " * num_spaces) 
-
+    nm_spaces = " " * name_spaces
+    pr_spaces = " " * price_spaces
+   
     # 10. Print the item name, price, and quantity
-    print("Item name                 | Price  | Quantity")
-    print("--------------------------|--------|----------")
-    ##print(f"{item_name} {price} {quantity}") ##DOES NOT PRINT WITH CORRECT SPACING
-    print(num_spaces)
-    print(order_list)
+    print(f"{item_name}{nm_spaces} | ${price}{pr_spaces}| {quantity}")
+
     
 
 
 # 11. Calculate the cost of the order using list comprehension
 # Multiply the price by quantity for each item in the order list, then sum()
-# and print the prices.4
-
-
-##total_cost = sum([order_list["Price"] * order_list["Quantity"] for item in order_list]) 
+# and print the prices.
 total_cost = sum([item["Price"] * item["Quantity"] for item in order_list])
-print(f"${total_cost:.4f}")
+print(f"Total order cost ${total_cost:.2f}")
